@@ -1,0 +1,37 @@
+.article{
+    width: 940px;
+    height: 140px;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: white;
+}
+.up{
+    display: flex;
+    justify-content: space-between;
+}
+.link{
+    display: flex;
+}
+.like{
+    display: flex;
+}
+.profile{
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+.picture{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.tags{
+    display: flex;
+}
+.tag{
+    border: 1px solid black;
+    padding: 5px;
+}
+.tag + .tag{
+    margin-left: 10px;
+}
