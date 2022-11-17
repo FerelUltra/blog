@@ -1,0 +1,31 @@
+.main{
+    background-color: #E5E5E5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form{
+    background-color: white;
+    width: 384px;
+    height: 600px;
+    padding: 20px 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    width: 320px;
+    height: 40px;
+}
+input[type='checkbox']{
+    width: 20px;
+    height: 20px;
+    align-self: flex-start;
+    margin-left: 30px;
+}
+label{
+    align-self: flex-start;
+    margin-left: 30px;
+}

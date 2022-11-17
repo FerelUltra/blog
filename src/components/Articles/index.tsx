@@ -8,7 +8,7 @@ import {fetchArticles} from "../../store/reducers/articleReducer";
 export const Articles = () => {
     const articles = useSelector((state: RootState) => state.articles.articles)
     const dispatch = useDispatch()
-    const pages = Math.ceil(articles.length/5)
+    const pages = articles ? Math.ceil(articles.length/5) : 5
     return (
         <>
             <Header/>

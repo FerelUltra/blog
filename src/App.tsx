@@ -7,6 +7,9 @@ import {Routes, Route, Link} from "react-router-dom";
 import {Articles} from "./components/Articles";
 import {fetchArticles} from "./store/reducers/articleReducer";
 import {WholeArticle} from "./components/WholeArticle";
+import {SingUp} from "./components/SignUp";
+import {SingIn} from "./components/SignIn";
+import {Profile} from "./components/Profile";
 
 function App() {
     const dispatch = useDispatch()
@@ -20,6 +23,9 @@ function App() {
                     <Route path="/" element={<Articles/>}/>
                     <Route path="/articles" element={<Articles/>}/>
                     <Route path="/articles/:slug" element={<WholeArticle/>}/>
+                    <Route path="/signup" element={<SingUp/>}/>
+                    <Route path="/signin" element={<SingIn/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
                 </Routes>
             </div>
         </div>

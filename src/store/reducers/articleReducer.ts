@@ -16,7 +16,7 @@ export interface IArticleState {
     tags: string[],
     favorited: boolean,
     favoriteCount: number,
-    author: {}
+    author: Record<string, unknown>
 }
 
 const initialState: IArticleState = {
