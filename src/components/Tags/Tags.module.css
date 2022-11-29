@@ -1,0 +1,48 @@
+.section h2{
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.tagsItems{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tagsItem{
+    display: flex;
+    gap: 10px;
+}
+
+.delete, .add {
+    cursor: pointer;
+    padding: 0 20px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.delete{
+    border: red solid 1px;
+    color: red;
+}
+
+.delete:disabled{
+    cursor: not-allowed;
+    color: rgba(243, 32, 32, 0.53);
+    border-color: rgba(243, 32, 32, 0.53);
+}
+
+.add{
+    border: rgba(24, 144, 255, 1) solid 1px;
+    color: rgba(24, 144, 255, 1);
+}
+
+.tagsInput {
+    width: 300px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    height: 40px;
+    outline: none;
+    font-size: 16px;
+    padding: 4px 10px;
+}

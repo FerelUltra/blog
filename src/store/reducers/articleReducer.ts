@@ -45,8 +45,25 @@ export const articleSlice = createSlice({
             state.favorited = favorited
             state.favoriteCount = favoriteCount
             state.author = author
-        }
+        },
+        setPostFavorite: (
+            state,
+            action: any,
+        ) => {
+            const { slug, favorited, favoritesCount } = action.payload;
+            state.articles.forEach((item) => {
+                if (item.slug === slug) {
+                    item.favorited = favorited;
+                    item.favoritesCount = favoritesCount;
+                }
+            });
+            // if (state.fullPostItem?.slug === slug) {
+            //     state.fullPostItem.favorited = favorited;
+            //     state.fullPostItem.favoritesCount = favoritesCount;
+            // }
+        },
     },
+
     extraReducers: {
         [fetchArticles.fulfilled]: (state: any, action: any) => {
             state.articles = action.payload.articles
@@ -54,7 +71,7 @@ export const articleSlice = createSlice({
     }
 })
 
-export const {putCurrentArticle} = articleSlice.actions
+export const {putCurrentArticle, setPostFavorite} = articleSlice.actions
 
 // Action creators are generated for each case reducer function
 

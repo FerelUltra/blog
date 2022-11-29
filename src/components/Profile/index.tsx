@@ -1,13 +1,15 @@
 import styles from './Profile.module.css'
 import {useForm} from "react-hook-form";
 import {Header} from "../Header";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {editProfile} from '../../api';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {putProfile} from "../../store/reducers/profileReducer";
 import {useNavigate} from "react-router-dom";
+import {RootState} from "../../store/store";
 
 export const Profile = () => {
+    const {username, email} = useSelector((state: RootState) => state.profile)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {
@@ -19,7 +21,8 @@ export const Profile = () => {
         handleSubmit,
         reset,
         watch,
-        setError
+        setError,
+        setValue
     } = useForm({
         mode: "onBlur"
     })
@@ -41,9 +44,19 @@ export const Profile = () => {
                 });
             });
     });
+    const onEmailChange = (e: any) => {
+        setEmailValue(e.target.value)
+    }
+    const onUsernameValue = (e: any) => {
+        setUsernameValue(e.target.value)
+    }
     const password = useRef({})
     password.current = watch("password", "");
-    const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    const emailValidate = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    useEffect(()=>{
+        setValue('username', username)
+        setValue('email', email)
+    }, [username, email])
     return (
         <>
             <Header/>
@@ -71,7 +84,7 @@ export const Profile = () => {
                             message: 'minimum is 6 symbols'
                         },
                         pattern: {
-                            value: email,
+                            value: emailValidate,
                             message: 'not valid email'
                         }
                     })}/>

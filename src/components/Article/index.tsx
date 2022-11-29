@@ -1,7 +1,8 @@
 import styles from './Article.module.css'
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {putCurrentArticle} from "../../store/reducers/articleReducer";
+import {putCurrentArticle, setPostFavorite} from "../../store/reducers/articleReducer";
+import { deleteFavoriteArticle, favoriteArticle } from '../../api';
 
 interface IAuthor {
     username: string,
@@ -22,6 +23,18 @@ interface IArticle {
 
 export const Article = ({slug, title, description, body, date, tags, favorited, favoriteCount, author}: IArticle) => {
     const dispatch = useDispatch()
+    const onClickLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        if (favorited) {
+            deleteFavoriteArticle(slug).then((data) => {
+                dispatch(setPostFavorite(data.article));
+            });
+        } else {
+            favoriteArticle(slug).then((data) => {
+                dispatch(setPostFavorite(data.article));
+            });
+        }
+    };
     return (
         <article className={styles.article}>
             <section className={styles.up}>
@@ -39,7 +52,7 @@ export const Article = ({slug, title, description, body, date, tags, favorited, 
                             author
                         }))
                     }} to={`/articles/${slug}`}>{title}</Link>
-                    <div className={styles.like}>
+                    <div className={styles.like} onClick={onClickLike}>
                         <img src="heart.svg" alt=""/>
                         <span>{favoriteCount}</span>
                     </div>

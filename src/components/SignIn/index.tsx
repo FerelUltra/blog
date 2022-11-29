@@ -45,7 +45,7 @@ export const SingIn = () => {
             <Header/>
             <main className={styles.main}>
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Create new account</h1>
+                    <h1>Sign in</h1>
                     <label htmlFor="email">Email address</label>
                     <input placeholder="Email address" id='email' {...register('email', {
                         required: "The field is required",

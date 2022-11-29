@@ -21,10 +21,10 @@ export const Articles = () => {
                                                                date={el.createdAt}
                                                                tags={el.tagList}
                                                                favorited={el.favorited}
-                                                               favoriteCount={el.favoriteCount}
+                                                               favoriteCount={el.favoritesCount}
                                                                author={el.author}
                 />) : null}
-                <section>{new Array(136).fill(1).map((el: any, i)=> <button onClick={()=>{dispatch(fetchArticles(i*5))}}>{i+1}</button>)}</section>
+                <section>{new Array(35).fill(1).map((el: any, i)=> <button onClick={()=>{dispatch(fetchArticles(i*5))}}>{i+1}</button>)}</section>
             </main>
 
         </>

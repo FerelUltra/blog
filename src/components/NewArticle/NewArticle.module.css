@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 938px;
+}
+.main{
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+}

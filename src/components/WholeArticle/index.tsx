@@ -35,6 +35,7 @@ export const WholeArticle = () => {
         favoriteCount,
         author
     } = useSelector((state: RootState) => state.articles)
+    const {username} = useSelector((state: RootState)=> state.profile)
     console.log(useParams())
     console.log(tags)
     return (
@@ -58,7 +59,18 @@ export const WholeArticle = () => {
                             <img src={author.image} className={styles.picture}>
 
                             </img>
-
+                            {username === author.username && (
+                                <div className={styles.actions}>
+                                    <button className={styles.deleteButton} type="button">
+                                        Delete
+                                    </button>
+                                    <Link to="edit">
+                                        <button className={styles.editButton} type="button">
+                                            Edit
+                                        </button>
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -66,7 +78,7 @@ export const WholeArticle = () => {
                         return <div className={styles.tag}>{el}</div>
                     })}</section>
 
-                    <section>{description}</section>
+                    <section>{body}</section>
                 </article>
             </main>
         </>

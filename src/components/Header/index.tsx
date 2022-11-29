@@ -6,6 +6,7 @@ import {RootState} from "../../store/store";
 import {putProfile} from "../../store/reducers/profileReducer";
 export const Header = () =>{
     const username = useSelector((state: RootState) => state.profile.username)
+    const image = useSelector((state: RootState) => state.profile.image)
     const dispatch = useDispatch()
     const logout = () => {
         document.cookie = 'token=; Max-Age=0';
@@ -19,7 +20,8 @@ export const Header = () =>{
                 <Link to={'/signup'} className={styles.button}>Sign up</Link>
             </div> :
             <div className={styles.login}>
-                <button>Create article</button>
+                <Link to={'/new-article'}>Create article</Link>
+                <img src={`${image}`} width="20px" alt=""/>
                 <Link to={'/profile'}>{username}</Link>
                 <button onClick={logout}>Log Out</button>
             </div>}
